@@ -1,0 +1,3 @@
+game:
+	ctags *.lua
+	love . 
