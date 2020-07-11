@@ -9,6 +9,7 @@ function sign(x)
     return -1
 end
 
+local skin = 0.01
 function Box.overlap(a, b)
     local dx = a.x - b.x
     local sw = (a.w + b.w) / 2.0
@@ -21,7 +22,7 @@ function Box.overlap(a, b)
     local depth = 0
     local normal = { x = 0, y = 0 }
 
-    if oy >= 0 or ox >= 0 then
+    if oy >= -skin or ox >= -skin then
         return false, depth, normal, a, b
     end
 
@@ -35,10 +36,10 @@ function Box.overlap(a, b)
         depth = ox
         normal.x = sign(dx)
     end
-    return dot(normal.x, normal.y, dvx, dvy) < 0.0, depth, normal, a, b
+    return dot(normal.x, normal.y, dvx, dvy) <= 0.0, depth, normal, a, b
 end
 
-function Box.solve(depth, normal, a, b)
+function Box.solve(delta, depth, normal, a, b)
     local total_mass = a.mass + b.mass
     if total_mass == 0 then return end
 
@@ -46,36 +47,58 @@ function Box.solve(depth, normal, a, b)
     local b_rel_mass = b.mass / total_mass
 
     -- Energy loss
-    local epsilon = 0.1
+    local epsilon = 0.0
 
     local av = dot(a.vx, a.vy, normal.x, normal.y)
     local bv = dot(b.vx, b.vy, normal.x, normal.y)
-    local dv = (1 + epsilon) * (av - bv)
+    local dnv = (1 + epsilon) * (av - bv)
 
-    -- Velocity correction
-    a.vx = a.vx - a_rel_mass * dv * normal.x
-    a.vy = a.vy - a_rel_mass * dv * normal.y
+    -- Normal velocity correction
+    a.vx = a.vx - a_rel_mass * dnv * normal.x
+    a.vy = a.vy - a_rel_mass * dnv * normal.y
 
-    b.vx = b.vx + b_rel_mass * dv * normal.x
-    b.vy = b.vy + b_rel_mass * dv * normal.y
+    b.vx = b.vx + b_rel_mass * dnv * normal.x
+    b.vy = b.vy + b_rel_mass * dnv * normal.y
+
+    -- Tangent velocity correction
+    local dx = a.x - b.x
+    local dy = a.y - b.y
+    local dir = dot(normal.x, normal.y, dx, dy)
+    local towards_player = false
+    towards_player = towards_player or (dir < 0 and a.player)
+    towards_player = towards_player or (dir > 0 and b.player)
+
+    local mu = math.min(a.friction, b.friction)
+    if mu ~= 0.0 and not towards_player then
+        local tangent = { x = normal.y, y = -normal.x }
+        local av = dot(a.vx, a.vy, tangent.x, tangent.y)
+        local bv = dot(b.vx, b.vy, tangent.x, tangent.y)
+        local dtv = math.pow(mu, delta) * (av - bv) * 0.03
+
+        a.vx = a.vx - a_rel_mass * dtv * tangent.x
+        a.vy = a.vy - a_rel_mass * dtv * tangent.y
+
+        b.vx = b.vx + b_rel_mass * dtv * tangent.x
+        b.vy = b.vy + b_rel_mass * dtv * tangent.y
+    end
 
     -- Position correction
-    a.x = a.x - a_rel_mass * depth * normal.x
-    a.y = a.y - a_rel_mass * depth * normal.y
+    a.x = a.x - a_rel_mass * (skin + depth) * normal.x
+    a.y = a.y - a_rel_mass * (skin + depth) * normal.y
 
-    b.x = b.x + b_rel_mass * depth * normal.x
-    b.y = b.y + b_rel_mass * depth * normal.y
+    b.x = b.x + b_rel_mass * (skin + depth) * normal.x
+    b.y = b.y + b_rel_mass * (skin + depth) * normal.y
 end
 
-function Box.overlap_and_solve(a, b)
+function Box.overlap_and_solve(delta, a, b)
     local valid, depth, normal, a, b = Box.overlap(a, b)
     if valid then
-        Box.solve(depth, normal, a, b)
+        Box.solve(delta, depth, normal, a, b)
     end
 end
 
 
-function Box.new(x, y, w, h, mass)
+function Box.new(x, y, w, h, mass, friction)
     local this = {}
     this.x = x or 0
     this.y = y or 0
@@ -88,6 +111,7 @@ function Box.new(x, y, w, h, mass)
     this.vy = 0
 
     this.mass = mass or 0
+    this.friction = friction or 0
     this.gravity = 1000
     
     function this.update(this, delta)

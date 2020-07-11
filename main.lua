@@ -1,37 +1,41 @@
 local Player = require("player")
 local Box = require("box")
 
+local boxes = {}
 local player = nil
-local box_a = nil
-local box_b = nil
-local box_c = nil
 function love.load()
     player = Player.new()
-    box_a = Box.new(300, 400, 300, 100, 0)
-    box_b = Box.new(100, 200, 100, 100, 1)
-    box_c = Box.new(250, 200, 100, 100, 2)
+    local box_a = Box.new(300, 400, 600, 100, 0, 1.0)
+    local box_b = Box.new(100, 200, 100, 100, 1, 1.0)
+    local box_c = Box.new(250, 200, 100, 100, 2, 1.0)
     box_b.vx = 50
+
+    table.insert(boxes, box_a)
+    table.insert(boxes, box_b)
+    table.insert(boxes, box_c)
+    table.insert(boxes, player)
 end
 
 function love.update(delta)
-    player:update(delta)
+    for _, v in pairs(boxes) do
+        v:update(delta)
+    end
 
-    box_a:update(delta)
-    box_b:update(delta)
-    box_c:update(delta)
-
-    Box.overlap_and_solve(box_a, box_b)
-    Box.overlap_and_solve(box_a, box_c)
-    Box.overlap_and_solve(box_b, box_c)
-
+    for i = 0,3,1 do
+        for i, a in pairs(boxes) do
+            for j, b in pairs(boxes) do
+                if j > i then 
+                    Box.overlap_and_solve(delta, a, b)
+                end
+            end
+        end
+    end
 end
 
 function love.draw()
-    player:draw()
-
-    box_a:draw()
-    box_b:draw()
-    box_c:draw()
+    for _, v in pairs(boxes) do
+        v:draw()
+    end
 end
 
 function love.keypressed(key, scancode, isrepeat)
