@@ -1,5 +1,7 @@
 local Player = require("player")
 local Box = require("box")
+local camera = require("camera") 
+print(camera)
 
 local boxes = {}
 local player = nil
@@ -30,9 +32,12 @@ function love.update(delta)
             end
         end
     end
+
+    camera:update(player, delta)
 end
 
 function love.draw()
+    camera:draw()
     for _, v in pairs(boxes) do
         v:draw()
     end
@@ -47,6 +52,14 @@ function love.keypressed(key, scancode, isrepeat)
         player.right = true
     elseif key == "space" or key == "w" then
         player:do_jump()
+    end
+
+    if key == "e" then
+        camera:shake(0.5)
+    end
+
+    if key == "r" then
+        camera:shake(1.5)
     end
 end
 
