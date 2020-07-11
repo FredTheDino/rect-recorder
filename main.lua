@@ -1,31 +1,23 @@
-local Player = require("player")
 local Box = require("box")
 local camera = require("camera") 
+local Level = require("level")
 
-local boxes = {}
+local gos = nil
 local player = nil
 function love.load()
-    player = Player.new()
+    local first_level = Level.load("levels.first")
+    player, gos = first_level:inst()
     player.camera = camera
-    local box_a = Box.new(300, 400, 8000, 100, 0, 1.0, 1.0)
-    local box_b = Box.new(100, 200, 100, 100, 1, 1.0, 1.0)
-    local box_c = Box.new(250, 200, 100, 100, 2, 1.0, 1.0)
-    box_b.vx = 50
-
-    table.insert(boxes, box_a)
-    table.insert(boxes, box_b)
-    table.insert(boxes, box_c)
-    table.insert(boxes, player)
 end
 
 function love.update(delta)
-    for _, v in pairs(boxes) do
+    for _, v in pairs(gos) do
         v:update(delta)
     end
 
     for i = 0,3,1 do
-        for i, a in pairs(boxes) do
-            for j, b in pairs(boxes) do
+        for i, a in pairs(gos) do
+            for j, b in pairs(gos) do
                 if j > i then 
                     Box.overlap_and_solve(delta, a, b)
                 end
@@ -40,7 +32,7 @@ function love.draw()
     love.graphics.origin()
     player:ui()
     camera:draw()
-    for _, v in pairs(boxes) do
+    for _, v in pairs(gos) do
         v:draw()
     end
 end

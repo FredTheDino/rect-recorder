@@ -1,12 +1,12 @@
 local Player = {}
 
 local floor = 200
-function Player.new()
+function Player.new(x, y)
     local this = {}
 
     -- A player, is infact a box!
-    this.x = 0
-    this.y = 0
+    this.x = x
+    this.y = y
 
     this.vx = 0
     this.vy = 0
@@ -92,7 +92,6 @@ function Player.new()
                 this.vx = this.vx + acc * vel_scale * delta
                 this.energy = this.energy - cost
             end
-            print(this.vx)
         end
 
         if this.bounce_mode and this.vy < 0 then
