@@ -67,10 +67,10 @@ function Box.solve(delta, depth, normal, a, b)
     local towards_player = false
     if dir < 0 and a.player then
         towards_player = true
-        a.grounded = normal.y < 0.6
+        a.grounded = a.grounded or normal.y < 0.6
     elseif dir > 0 and b.player then
         towards_player = true
-        b.grounded = normal.y > 0.6
+        b.grounded = b.grounded or normal.y > 0.6
     end
 
     local mu = math.min(a.friction, b.friction)

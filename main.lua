@@ -1,7 +1,6 @@
 local Player = require("player")
 local Box = require("box")
 local camera = require("camera") 
-print(camera)
 
 local boxes = {}
 local player = nil
@@ -37,6 +36,8 @@ function love.update(delta)
 end
 
 function love.draw()
+    love.graphics.origin()
+    player:ui()
     camera:draw()
     for _, v in pairs(boxes) do
         v:draw()
