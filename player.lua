@@ -11,11 +11,13 @@ function Player.new()
     this.vx = 0
     this.vy = 0
 
-    this.w = 100
+    this.w = 50
     this.h = 100
     this.mass = 1.0
     this.friction = 0.1
+
     this.player = true
+    this.grounded = false
 
     this.acc = 2000.0
     this.damp = 0.005
@@ -28,8 +30,11 @@ function Player.new()
     this.right = false
 
     function this.do_jump(this)
-        this.jump = true
-        this.vy = -this.jump_force
+        if this.grounded then
+            this.jump = true
+            this.grounded = false
+            this.vy = -this.jump_force
+        end
     end
 
     function this.update(this, delta)

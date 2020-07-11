@@ -17,6 +17,10 @@ function camera.update(this, target, delta)
     local dx = target.x - this.x
     local dy = target.y - this.y
 
+    if dy < (camera.radius * 3) and not target.grounded then
+        dy = 0
+    end
+
     local length = math.sqrt(dx * dx + dy * dy)
     if length < camera.radius then return end
 
