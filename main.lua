@@ -1,17 +1,28 @@
 local Player = require("player")
-
+local Box = require("box")
 
 local player = nil
+local box_a = nil
+local box_b = nil
 function love.load()
     player = Player.new()
+    box_a = Box.new(100, 400, 100, 100, 0)
+    box_b = Box.new(100, 200, 100, 100, 1)
 end
 
 function love.update(delta)
     player:update(delta)
+
+    box_a:update(delta)
+    box_b:update(delta)
+    box_a:overlap(box_b)
 end
 
 function love.draw()
     player:draw()
+
+    box_a:draw()
+    box_b:draw()
 end
 
 function love.keypressed(key, scancode, isrepeat)

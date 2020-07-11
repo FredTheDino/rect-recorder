@@ -9,9 +9,9 @@ function Player.new()
     this.vx = 0
     this.vy = 0
     this.acc = 2000.0
-    this.damp = 0.01
+    this.damp = 0.005
     this.gravity = 5000.0
-    this.jump_force = 1200.0
+    this.jump_force = 1500.0
 
     this.w = 100
     this.h = 100
