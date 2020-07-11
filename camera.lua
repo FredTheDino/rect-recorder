@@ -11,7 +11,7 @@ function clamp(v, l, h)
 end
 
 function camera.update(this, target, delta)
-    this.t = math.max(0, this.t - delta * math.max(this.t, 1.0))
+    this.t = math.max(0, this.t - delta * math.max(this.t * 10, 1.0))
 
     
     local dx = target.x - this.x
@@ -40,12 +40,12 @@ function camera.draw(this)
     love.graphics.rotate(math.sin(math.random() * 2 * math.pi) * math.min(shake * 0.01, 0.1))
     love.graphics.translate(math.sin(math.random() * 2 * math.pi) * shake * 5,
                             math.sin(math.random() * 2 * math.pi) * shake * 5)
-    love.graphics.scale(math.min(math.random() * shake * 0.01, 0.5) + 1.0)
+    love.graphics.scale(math.min(math.random() * shake * 0.01, 0.5) + 0.9)
     love.graphics.translate(-this.x, -this.y)
 end
 
 function camera.shake_factor(this)
-    return this.t * this.t * 0.2
+    return math.sqrt(this.t * 0.1) * 2.0
 end
 
 function camera.shake(this, strength)

@@ -47,7 +47,10 @@ function Box.solve(delta, depth, normal, a, b)
     local b_rel_mass = b.mass / total_mass
 
     -- Energy loss
-    local epsilon = 0.0
+    local epsilon = (a.bounce + b.bounce) / 2.0
+    if a.bounce == -1 or b.bounce == -1 then
+        epsilon = 0
+    end
 
     local av = dot(a.vx, a.vy, normal.x, normal.y)
     local bv = dot(b.vx, b.vy, normal.x, normal.y)
@@ -66,11 +69,11 @@ function Box.solve(delta, depth, normal, a, b)
     local dir = dot(normal.x, normal.y, dx, dy)
     local towards_player = false
     if dir < 0 and a.player then
+        a:collision(normal, math.abs(dnv))
         towards_player = true
-        a.grounded = a.grounded or normal.y < 0.6
     elseif dir > 0 and b.player then
+        b:collision({x=-normal.x, y=-normal.y}, math.abs(dnv))
         towards_player = true
-        b.grounded = b.grounded or normal.y > 0.6
     end
 
     local mu = math.min(a.friction, b.friction)
@@ -103,7 +106,7 @@ function Box.overlap_and_solve(delta, a, b)
 end
 
 
-function Box.new(x, y, w, h, mass, friction)
+function Box.new(x, y, w, h, mass, bounce, friction)
     local this = {}
     this.x = x or 0
     this.y = y or 0
@@ -116,6 +119,7 @@ function Box.new(x, y, w, h, mass, friction)
     this.vy = 0
 
     this.mass = mass or 0
+    this.bounce = bounce or 0 
     this.friction = friction or 0
     this.gravity = 1000
     

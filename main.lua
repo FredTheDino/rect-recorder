@@ -6,9 +6,10 @@ local boxes = {}
 local player = nil
 function love.load()
     player = Player.new()
-    local box_a = Box.new(300, 400, 600, 100, 0, 1.0)
-    local box_b = Box.new(100, 200, 100, 100, 1, 1.0)
-    local box_c = Box.new(250, 200, 100, 100, 2, 1.0)
+    player.camera = camera
+    local box_a = Box.new(300, 400, 8000, 100, 0, 1.0, 1.0)
+    local box_b = Box.new(100, 200, 100, 100, 1, 1.0, 1.0)
+    local box_c = Box.new(250, 200, 100, 100, 2, 1.0, 1.0)
     box_b.vx = 50
 
     table.insert(boxes, box_a)
@@ -52,6 +53,7 @@ function love.keypressed(key, scancode, isrepeat)
     elseif key == "right" or key == "d" then
         player.right = true
     elseif key == "space" or key == "w" then
+        player.bounce_mode = true
         player:do_jump()
     end
 
@@ -70,6 +72,7 @@ function love.keyreleased(key, sc)
     elseif key == "right" or key == "d" then
         player.right = false
     elseif key == "space" or key == "w" then
+        player.bounce_mode = false
         player.jump = false
     end
 end
