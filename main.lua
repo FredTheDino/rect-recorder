@@ -4,10 +4,13 @@ local Box = require("box")
 local player = nil
 local box_a = nil
 local box_b = nil
+local box_c = nil
 function love.load()
     player = Player.new()
-    box_a = Box.new(100, 400, 100, 100, 0)
+    box_a = Box.new(300, 400, 300, 100, 0)
     box_b = Box.new(100, 200, 100, 100, 1)
+    box_c = Box.new(250, 200, 100, 100, 2)
+    box_b.vx = 50
 end
 
 function love.update(delta)
@@ -15,15 +18,12 @@ function love.update(delta)
 
     box_a:update(delta)
     box_b:update(delta)
+    box_c:update(delta)
 
-    valid, depth, normal = box_a:overlap(box_b)
-    if valid then
-        box_a.vx = 0
-        box_b.vx = 0
+    Box.overlap_and_solve(box_a, box_b)
+    Box.overlap_and_solve(box_a, box_c)
+    Box.overlap_and_solve(box_b, box_c)
 
-        box_a.vy = 0
-        box_b.vy = 0
-    end
 end
 
 function love.draw()
@@ -31,12 +31,11 @@ function love.draw()
 
     box_a:draw()
     box_b:draw()
+    box_c:draw()
 end
 
 function love.keypressed(key, scancode, isrepeat)
     if isrepeat then return end
-
-    print("Press", key)
 
     if key == "left" or key == "a" then
         player.left = true
@@ -48,8 +47,6 @@ function love.keypressed(key, scancode, isrepeat)
 end
 
 function love.keyreleased(key, sc)
-    print("Rel", key)
-
     if key == "left" or key == "a" then
         player.left = false
     elseif key == "right" or key == "d" then
