@@ -15,7 +15,15 @@ function love.update(delta)
 
     box_a:update(delta)
     box_b:update(delta)
-    box_a:overlap(box_b)
+
+    valid, depth, normal = box_a:overlap(box_b)
+    if valid then
+        box_a.vx = 0
+        box_b.vx = 0
+
+        box_a.vy = 0
+        box_b.vy = 0
+    end
 end
 
 function love.draw()

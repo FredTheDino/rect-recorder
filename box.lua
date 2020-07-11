@@ -4,6 +4,12 @@ function dot(x1, y1, x2, y2)
     return x1 * x2 + y1 * y2
 end
 
+function sign(x)
+    if x > 0 then return 1 end
+    return 0
+end
+
+
 function Box.new(x, y, w, h, mass)
     local this = {}
     this.x = x or 0
@@ -26,21 +32,25 @@ function Box.new(x, y, w, h, mass)
         local sh = (a.h + b.h) / 2.0
         local oy = math.abs(dy) - sh
 
+        local depth = 0
+        local normal = { x = 0, y = 0 }
+
         print(oy, ox)
         if oy >= 0 or ox >= 0 then
-            return 0, {
-                x = 0,
-                y = 0,
-            }
+            return false, depth, normal
         end
 
+        local dvx = a.vx - b.vx
+        local dvy = a.vy - b.vy
+
         if oy > ox then
-            a.vy = 0
-            b.vy = 0
+            depth = oy
+            normal.y = sign(dy)
         else
-            a.vx = 0
-            b.vx = 0
+            depth = ox
+            normal.x = sign(dx)
         end
+        return dot(normal.x, normal.y, dvx, dvy) < 0, depth, normal
     end
     
     function this.update(this, delta)
