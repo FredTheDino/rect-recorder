@@ -41,7 +41,7 @@ function Player.new(x, y)
     this.bounce_mode = false
 
     this.full_energy = 1.0
-    this.jump_energy_cost = 0.2
+    this.jump_energy_cost = 0.15
     this.walk_energy_cost = 0.3
     this.energy = this.full_energy
 

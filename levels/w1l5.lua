@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 11,
+  nextobjectid = 13,
   properties = {},
   tilesets = {},
   layers = {
@@ -51,7 +51,7 @@ return {
           properties = {}
         },
         {
-          id = 8,
+          id = 10,
           name = "",
           type = "",
           shape = "rectangle",
@@ -64,14 +64,27 @@ return {
           properties = {}
         },
         {
-          id = 9,
+          id = 11,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 200,
-          y = -150,
+          x = -550,
+          y = -250,
           width = 150,
-          height = 250,
+          height = 350,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = -700,
+          y = -350,
+          width = 150,
+          height = 450,
           rotation = 0,
           visible = true,
           properties = {}
@@ -108,7 +121,7 @@ return {
           type = "",
           shape = "point",
           x = 100,
-          y = -100,
+          y = -350,
           width = 0,
           height = 0,
           rotation = 0,
@@ -116,9 +129,9 @@ return {
           properties = {}
         },
         {
-          id = 10,
+          id = 6,
           name = "next",
-          type = "levels.w1l5",
+          type = "levels.w1l2",
           shape = "point",
           x = -50,
           y = -250,
