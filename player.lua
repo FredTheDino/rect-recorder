@@ -14,6 +14,7 @@ function Player.new(x, y)
     this.last_vy = 0
     this.ay = 0
     this.squeeze = 0
+    this.color_lerp = 0
 
     this.w = 50
     this.h = 100
@@ -75,8 +76,10 @@ function Player.new(x, y)
     function this.update(this, delta)
 
         if this.bounce_mode and math.abs(this.vy) > 20 then
+            this.color_lerp = math.min(1.0, this.color_lerp + delta * 4)
             this.bounce = 0.50
         else
+            this.color_lerp = math.max(0.0, this.color_lerp - delta * 8)
             this.bounce = -1.0
         end
 
@@ -121,19 +124,23 @@ function Player.new(x, y)
         love.graphics.rectangle("fill", p, (h * (1.0 - this.energy)) + p, w, h * this.energy)
     end
 
+    function lerp(a, b, t)
+        return a  + (b - a) * t
+    end
+
     function this.draw(this)
-        if this.bounce_mode and this.vy < 0 then
-            love.graphics.setColor(1.0, 0.0, 1.0, 1.0)
-        else
-            love.graphics.setColor(0.6, 0.6, 1.0, 1.0)
-        end
+        love.graphics.setColor(
+            lerp(0.9, 0.8, this.color_lerp), 
+            lerp(0.3, 0.1, this.color_lerp), 
+            lerp(0.3, 0.1, this.color_lerp),
+            1.0)
 
         local s = 0.1
         local force = clamp(this.ay * 0.0004, -s, s)
-        this.squeeze = (this.squeeze + 3 * force) / 4
-        this.squeeze = this.squeeze * math.pow(0.5, love.timer.getDelta())
+        this.squeeze = (this.squeeze + 4 * force) / 5
+        this.squeeze = this.squeeze * math.pow(0.6, love.timer.getDelta())
 
-        local num_slices = 10
+        local num_slices = 25
         local area = 5000 / num_slices
         local h = (this.squeeze + 1.0) * (this.h / num_slices)
         local w = area / h

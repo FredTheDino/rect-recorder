@@ -12,14 +12,14 @@
     <property name="m" type="float" value="0.3"/>
    </properties>
   </object>
-  <object id="17" x="700" y="-150" width="200" height="450"/>
+  <object id="17" x="700" y="-200" width="200" height="500"/>
   <object id="20" x="0" y="-300" width="100" height="600"/>
  </objectgroup>
  <objectgroup id="3" name="misc">
   <object id="1" name="start" x="250" y="-100">
    <point/>
   </object>
-  <object id="2" name="goal" x="800" y="-200">
+  <object id="2" name="goal" x="800" y="-250">
    <point/>
   </object>
   <object id="6" name="next" type="levels.w3l2" x="0" y="-350">

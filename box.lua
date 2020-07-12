@@ -114,6 +114,10 @@ function Box.new(x, y, w, h, mass, bounce, friction)
     this.h = h
 
     this.r = math.random()
+    this.b = 0.5
+    if mass ~= 0 then
+        this.b = this.r + math.random() * 0.2 + 0.5
+    end
 
     this.vx = 0
     this.vy = 0
@@ -133,8 +137,20 @@ function Box.new(x, y, w, h, mass, bounce, friction)
     end
 
     function this.draw(this)
-        love.graphics.setColor(this.r, 0.2, 0.5, 1.0)
-        love.graphics.rectangle("fill", this.x - this.w / 2, this.y - this.h / 2, this.w, this.h)
+        local x = this.x - this.w / 2
+        local y = this.y - this.h / 2
+        if this.mass ~= 0 then
+            love.graphics.setColor(this.r, 0.2, this.b, 1.0)
+            love.graphics.rectangle("fill", x, y, this.w, this.h)
+            love.graphics.setColor(0, 0, 0, 0.1)
+            local width = 20
+            love.graphics.rectangle("fill", x, y + this.h - width, this.w, width)
+        else
+            local dim = 0.2
+            local fac = 1.0 - dim
+            love.graphics.setColor(this.r * fac, 0.2 * fac, this.b * fac, 1.0)
+            love.graphics.rectangle("fill", x, y, this.w, this.h)
+        end
     end
 
     return this
