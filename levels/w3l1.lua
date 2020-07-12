@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 21,
+  nextobjectid = 27,
   properties = {},
   tilesets = {},
   layers = {
@@ -90,6 +90,40 @@ return {
           height = 600,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 25,
+          name = "",
+          type = "",
+          shape = "text",
+          x = 0,
+          y = -450,
+          width = 390.036,
+          height = 59.5523,
+          rotation = 0,
+          visible = true,
+          text = "Chapter 3",
+          fontfamily = "Sans Serif",
+          pixelsize = 39,
+          wrap = true,
+          halign = "center",
+          valign = "center",
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "",
+          type = "",
+          shape = "text",
+          x = 600,
+          y = 350,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "The Twist",
+          wrap = true,
           properties = {}
         }
       }

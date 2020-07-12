@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 11,
+  nextobjectid = 15,
   properties = {},
   tilesets = {},
   layers = {
@@ -74,6 +74,36 @@ return {
           height = 250,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -400,
+          y = -300,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "Sometimes you have to go backwards",
+          wrap = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "",
+          type = "",
+          shape = "text",
+          x = 0,
+          y = 150,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "To go a bit forward",
+          wrap = true,
           properties = {}
         }
       }

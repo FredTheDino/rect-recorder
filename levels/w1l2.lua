@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 7,
+  nextobjectid = 10,
   properties = {},
   tilesets = {},
   layers = {
@@ -84,7 +84,7 @@ return {
           x = 250,
           y = -300,
           width = 200,
-          height = 500,
+          height = 350,
           rotation = 0,
           visible = true,
           properties = {}
@@ -97,7 +97,7 @@ return {
           x = -200,
           y = -50,
           width = 450,
-          height = 250,
+          height = 100,
           rotation = 0,
           visible = true,
           properties = {}
@@ -110,9 +110,39 @@ return {
           x = -400,
           y = -350,
           width = 200,
-          height = 550,
+          height = 400,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -400,
+          y = -550,
+          width = 300,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "Do you think bouncing and flying are different?",
+          wrap = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -200,
+          y = 100,
+          width = 300,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "Hold W or Up Arrow to bounce",
+          wrap = true,
           properties = {}
         }
       }

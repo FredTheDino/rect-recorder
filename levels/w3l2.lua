@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 46,
+  nextobjectid = 49,
   properties = {},
   tilesets = {},
   layers = {
@@ -75,6 +75,25 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 48,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -550,
+          y = -500,
+          width = 390.036,
+          height = 59.5523,
+          rotation = 0,
+          visible = true,
+          text = "It has to be worth the struggle",
+          fontfamily = "Sans Serif",
+          pixelsize = 22,
+          wrap = true,
+          halign = "center",
+          valign = "center",
+          properties = {}
         }
       }
     },
@@ -118,7 +137,7 @@ return {
         {
           id = 6,
           name = "next",
-          type = "levels.w2l2",
+          type = "end",
           shape = "point",
           x = 0,
           y = -350,

@@ -1,6 +1,7 @@
 local Box = require("box")
 local Player = require("player")
 local Goal = require("goal")
+local Text = require("text")
 local Level = {}
 
 function Level.load(level_name)
@@ -27,15 +28,25 @@ function Level.load(level_name)
         end
         if layer.name == "platforms" then
             for _, obj in pairs(layer.objects) do
-                local x = obj.x
-                local y = obj.y
-                local w = obj.width
-                local h = obj.height
-                local m = obj.properties["m"] and tonumber(obj.properties["m"]) or 0
-                local b = obj.properties["b"] and tonumber(obj.properties["b"]) or 1.0
-                local f = obj.properties["f"] and tonumber(obj.properties["f"]) or 0.5
-                local box = Box.new(x + w / 2, y + h / 2, w, h, m, b, f)
-                table.insert(this.objs, box)
+                if obj.shape == "rectangle" then
+                    local x = obj.x
+                    local y = obj.y
+                    local w = obj.width
+                    local h = obj.height
+                    local m = obj.properties["m"] and tonumber(obj.properties["m"]) or 0
+                    local b = obj.properties["b"] and tonumber(obj.properties["b"]) or 1.0
+                    local f = obj.properties["f"] and tonumber(obj.properties["f"]) or 0.5
+                    local box = Box.new(x + w / 2, y + h / 2, w, h, m, b, f)
+                    table.insert(this.objs, box)
+                elseif obj.shape == "text" then
+                    local x = obj.x
+                    local y = obj.y
+                    local w = obj.width
+                    local size = obj.pixelsize
+                    local text = obj.text
+                    local t = Text.new(x, y, w, size, text)
+                    table.insert(this.objs, t)
+                end
             end
         end
     end

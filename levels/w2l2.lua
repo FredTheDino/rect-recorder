@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 11,
+  nextobjectid = 13,
   properties = {},
   tilesets = {},
   layers = {
@@ -72,7 +72,7 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = -100,
+          x = -200,
           y = -300,
           width = 100,
           height = 250,
@@ -83,6 +83,36 @@ return {
             ["f"] = 1,
             ["m"] = 1.1
           }
+        },
+        {
+          id = 11,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -750,
+          y = -400,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "Should I hold back when things are though?",
+          wrap = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -300,
+          y = 150,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "Even though they are so heavy?",
+          wrap = true,
+          properties = {}
         }
       }
     },

@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 13,
+  nextobjectid = 14,
   properties = {},
   tilesets = {},
   layers = {
@@ -87,6 +87,21 @@ return {
           height = 450,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -650,
+          y = 0,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "And isn't that the same thing?",
+          wrap = true,
           properties = {}
         }
       }

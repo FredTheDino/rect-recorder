@@ -2,7 +2,11 @@ local Box = require("box")
 local camera = require("camera") 
 local Level = require("level")
 
+local large_font = love.graphics.newFont("baskervville.ttf", 100, "normal")
+
 local current_level = nil
+
+local music = nil
 
 local gos = nil
 local player = nil
@@ -10,7 +14,11 @@ local goal = nil
 
 local load_next = nil
 function love.load()
-    current_level = Level.load("levels.w1l1")
+    music = love.audio.newSource("sounds/music.mp3", "stream")
+    music:setVolume(0.5)
+    music:play()
+
+    current_level = Level.load("levels.w3l2")
     start_level()
 end
 
@@ -46,7 +54,7 @@ function love.update(delta)
         end
     else
         goal:update()
-        if goal:should_load_next() then
+        if goal:should_load_next() and current_level.next ~= "end" then
             if current_level.next ~= nil then
                 current_level = Level.load(current_level.next)
             else
@@ -54,14 +62,6 @@ function love.update(delta)
             end
             start_level()
         end
-
-        -- if load_next == nil then
-        --     load_next = love.timer.getTime() + 0.5
-        -- end
-
-        -- if love.timer.getTime() >= load_next then
-        --     load_next = nil
-        -- end
     end
 
     camera:update(player, goal, delta)
@@ -75,6 +75,14 @@ function love.draw()
     camera:draw()
     for _, v in pairs(gos) do
         v:draw()
+    end
+
+    love.graphics.origin()
+    if current_level.next == "end" and player.finished then
+        local t = (love.timer.getTime() - goal.finish_start) / goal.fadein_time
+        love.graphics.setColor(1.0, 1.0, 1.0, t)
+        love.graphics.setFont(large_font)
+        love.graphics.print("The End", 220, 300)
     end
 end
 

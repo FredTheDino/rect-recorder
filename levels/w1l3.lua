@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 10,
+  nextobjectid = 13,
   properties = {},
   tilesets = {},
   layers = {
@@ -74,6 +74,36 @@ return {
           height = 350,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -100,
+          y = -350,
+          width = 300,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "Touching the ground is inevitable,",
+          wrap = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -395.719,
+          y = 146.5,
+          width = 568.438,
+          height = 19,
+          rotation = 0,
+          visible = true,
+          text = "so how are they different?",
+          wrap = true,
           properties = {}
         }
       }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="4" nextobjectid="8">
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="4" nextobjectid="12">
  <editorsettings>
   <export target="w2l1.lua" format="lua"/>
  </editorsettings>
@@ -11,6 +11,12 @@
     <property name="f" type="float" value="1.1"/>
     <property name="m" type="float" value="5"/>
    </properties>
+  </object>
+  <object id="10" x="-300" y="-450" width="390.036" height="59.5523">
+   <text fontfamily="Sans Serif" pixelsize="39" wrap="1" halign="center" valign="center">Chapter 2</text>
+  </object>
+  <object id="11" x="-131" y="0" width="550" height="40">
+   <text wrap="1">The obsticale</text>
   </object>
  </objectgroup>
  <objectgroup id="3" name="misc">

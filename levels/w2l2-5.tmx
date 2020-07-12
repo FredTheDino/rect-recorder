@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="4" nextobjectid="21">
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="4" nextobjectid="22">
  <editorsettings>
   <export target="w2l2-5.lua" format="lua"/>
  </editorsettings>
@@ -18,6 +18,9 @@
    <properties>
     <property name="b" type="float" value="-1"/>
    </properties>
+  </object>
+  <object id="21" x="-800" y="-150" width="550" height="40">
+   <text wrap="1">If they neatly fit in my worldview?</text>
   </object>
  </objectgroup>
  <objectgroup id="3" name="misc">

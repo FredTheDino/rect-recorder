@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 8,
+  nextobjectid = 12,
   properties = {},
   tilesets = {},
   layers = {
@@ -65,6 +65,40 @@ return {
             ["f"] = 1.1,
             ["m"] = 5
           }
+        },
+        {
+          id = 10,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -300,
+          y = -450,
+          width = 390.036,
+          height = 59.5523,
+          rotation = 0,
+          visible = true,
+          text = "Chapter 2",
+          fontfamily = "Sans Serif",
+          pixelsize = 39,
+          wrap = true,
+          halign = "center",
+          valign = "center",
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -131,
+          y = 0,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "The obsticale",
+          wrap = true,
+          properties = {}
         }
       }
     },

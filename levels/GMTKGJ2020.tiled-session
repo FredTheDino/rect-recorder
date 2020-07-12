@@ -58,39 +58,39 @@
         },
         "w1l1.tmx": {
             "scale": 1,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 378.5,
-                "y": -213
+                "x": 397.5,
+                "y": -286
             }
         },
         "w1l2.tmx": {
             "scale": 0.75,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 200.66666666666663,
-                "y": -354.66666666666674
+                "x": 144.66666666666663,
+                "y": -322.66666666666674
             }
         },
         "w1l3.tmx": {
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 269.5,
-                "y": -147
+                "x": 85.5,
+                "y": -88
             }
         },
         "w1l4.tmx": {
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": -63.5,
-                "y": 0
+                "x": -3.5,
+                "y": -76
             }
         },
         "w1l5.tmx": {
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": -188.5,
                 "y": -224
@@ -114,10 +114,10 @@
         },
         "w2l1.tmx": {
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 105.5,
-                "y": -5
+                "y": -137
             }
         },
         "w2l2-5.tmx": {
@@ -140,8 +140,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -44.5,
-                "y": -95
+                "x": -75.5,
+                "y": -270
             }
         },
         "w2l4.tmx": {
@@ -154,18 +154,18 @@
         },
         "w3l1.tmx": {
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 508.5,
-                "y": -66
+                "x": 535.5,
+                "y": -40
             }
         },
         "w3l2.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 1,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": -276.66666666666663,
-                "y": -70.66666666666674
+                "x": -263.5,
+                "y": -346
             }
         }
     },

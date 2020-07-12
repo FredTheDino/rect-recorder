@@ -1,6 +1,12 @@
 local Goal = {}
 
+local start = love.audio.newSource("sounds/start.wav", "static")
+local finish = love.audio.newSource("sounds/finish.wav", "static")
+
 function Goal.new(x, y)
+    start:setPitch(math.random() * 0.1 + 0.95)
+    start:play()
+
     local this = {}
     this.x = x
     this.y = y
@@ -22,6 +28,8 @@ function Goal.new(x, y)
         local dy = this.y - this.player.y
         local length = dx * dx + dy * dy
         if length < (this.radius * this.radius) and this.finish_start == nil then
+            finish:setPitch(math.random() * 0.1 + 0.95)
+            finish:play()
             this.player.finished = true
             this.finish_start = love.timer.getTime()
             this.finish_end = love.timer.getTime() + this.fadeout_time + this.blackout

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="4" nextobjectid="13">
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="4" nextobjectid="14">
  <editorsettings>
   <export target="w1l5.lua" format="lua"/>
  </editorsettings>
@@ -9,6 +9,9 @@
   <object id="10" x="-400" y="-150" width="150" height="250"/>
   <object id="11" x="-550" y="-250" width="150" height="350"/>
   <object id="12" x="-700" y="-350" width="150" height="450"/>
+  <object id="13" x="-650" y="0" width="550" height="40">
+   <text wrap="1">And isn't that the same thing?</text>
+  </object>
  </objectgroup>
  <objectgroup id="3" name="misc">
   <object id="1" name="start" x="-150" y="-100">

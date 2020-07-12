@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 21,
+  nextobjectid = 22,
   properties = {},
   tilesets = {},
   layers = {
@@ -106,6 +106,21 @@ return {
           properties = {
             ["b"] = -1
           }
+        },
+        {
+          id = 21,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -800,
+          y = -150,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "If they neatly fit inmy worldview?",
+          wrap = true,
+          properties = {}
         }
       }
     },

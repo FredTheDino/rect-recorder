@@ -1,5 +1,8 @@
 local Player = {}
 
+local jump = love.audio.newSource("sounds/jump.wav", "static")
+local bounce = love.audio.newSource("sounds/bounce.wav", "static")
+
 local floor = 200
 function Player.new(x, y)
     local this = {}
@@ -52,6 +55,8 @@ function Player.new(x, y)
         local cost = this.jump_energy_cost
         if this.grounded  then
             if this.energy > cost then
+                jump:setPitch(1.10 - math.random() * 0.10)
+                jump:play()
                 this.energy = this.energy - cost
 
                 this.jump = true
@@ -72,6 +77,10 @@ function Player.new(x, y)
         this.grounded = normal.y < 0.6
         if impact > 200 then
             this.camera:shake(impact * 0.0001)
+            if this.bounce_mode then
+                bounce:setPitch(0.95 + math.random() * 0.1)
+                bounce:play()
+            end
         end
     end
 

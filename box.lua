@@ -1,4 +1,5 @@
 local Box = {}
+local hit = love.audio.newSource("sounds/hit.wav", "static")
 
 function dot(x1, y1, x2, y2)
     return x1 * x2 + y1 * y2
@@ -55,6 +56,12 @@ function Box.solve(delta, depth, normal, a, b)
     local av = dot(a.vx, a.vy, normal.x, normal.y)
     local bv = dot(b.vx, b.vy, normal.x, normal.y)
     local dnv = (1 + epsilon) * (av - bv)
+
+    if -dnv > 200 then
+        hit:setPitch((600 / -dnv))
+        hit:play()
+    end
+
 
     -- Normal velocity correction
     a.vx = a.vx - a_rel_mass * dnv * normal.x

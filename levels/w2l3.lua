@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 20,
+  nextobjectid = 21,
   properties = {},
   tilesets = {},
   layers = {
@@ -103,6 +103,21 @@ return {
           height = 600,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 20,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -600,
+          y = -450,
+          width = 550,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "Why not bounce on those ideas, and make something better",
+          wrap = true,
           properties = {}
         }
       }

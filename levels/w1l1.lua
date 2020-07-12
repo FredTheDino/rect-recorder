@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 6,
-  nextobjectid = 16,
+  nextobjectid = 20,
   properties = {},
   tilesets = {},
   layers = {
@@ -87,6 +87,40 @@ return {
           height = 100,
           rotation = 0,
           visible = true,
+          properties = {}
+        },
+        {
+          id = 18,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -150,
+          y = -350,
+          width = 390.036,
+          height = 59.5523,
+          rotation = 0,
+          visible = true,
+          text = "Bob in Bounceland",
+          fontfamily = "Sans Serif",
+          pixelsize = 39,
+          wrap = true,
+          halign = "center",
+          valign = "center",
+          properties = {}
+        },
+        {
+          id = 19,
+          name = "",
+          type = "",
+          shape = "text",
+          x = 200,
+          y = 0,
+          width = 210.438,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          text = "A or Left Arrow to move",
+          wrap = true,
           properties = {}
         }
       }
