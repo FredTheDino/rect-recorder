@@ -2,11 +2,17 @@ local Box = require("box")
 local camera = require("camera") 
 local Level = require("level")
 
+local current_level = nil
+
 local gos = nil
 local player = nil
 function love.load()
-    local first_level = Level.load("levels.first")
-    player, gos = first_level:inst()
+    current_level = Level.load("levels.first")
+    start_level()
+end
+
+function start_level()
+    player, gos = current_level:inst()
     player.camera = camera
 end
 
@@ -54,7 +60,7 @@ function love.keypressed(key, scancode, isrepeat)
     end
 
     if key == "r" then
-        camera:shake(1.5)
+        start_level()
     end
 end
 

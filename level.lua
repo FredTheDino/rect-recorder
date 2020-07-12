@@ -26,8 +26,8 @@ function Level.load(level_name)
                 local w = obj.width
                 local h = obj.height
                 local m = obj.properties["m"] and tonumber(obj.properties["m"]) or 0
-                local b = obj.properties["b"] and tonumber(obj.properties["b"]) or 0
-                local f = obj.properties["f"] and tonumber(obj.properties["f"]) or 0
+                local b = obj.properties["b"] and tonumber(obj.properties["b"]) or 1.0
+                local f = obj.properties["f"] and tonumber(obj.properties["f"]) or 0.5
                 local box = Box.new(x + w / 2, y + h / 2, w, h, m, b, f)
                 table.insert(this.objs, box)
             end
