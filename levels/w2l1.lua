@@ -96,7 +96,7 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          text = "The obsticale",
+          text = "The obstacle",
           wrap = true,
           properties = {}
         }

@@ -100,7 +100,7 @@ return {
           height = 59.5523,
           rotation = 0,
           visible = true,
-          text = "Bob in Bounceland",
+          text = "In Bounceland",
           fontfamily = "Sans Serif",
           pixelsize = 39,
           wrap = true,

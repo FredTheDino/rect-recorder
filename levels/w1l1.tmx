@@ -17,7 +17,7 @@
  <objectgroup id="3" name="platforms">
   <object id="1" x="-150" y="-150" width="950" height="100"/>
   <object id="18" x="-150" y="-350" width="390.036" height="59.5523">
-   <text fontfamily="Sans Serif" pixelsize="39" wrap="1" halign="center" valign="center">Bob in Bounceland</text>
+   <text fontfamily="Sans Serif" pixelsize="39" wrap="1" halign="center" valign="center">In Bounceland</text>
   </object>
   <object id="19" x="200" y="0" width="210.438" height="40">
    <text wrap="1">A or Left Arrow to move</text>

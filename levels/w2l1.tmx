@@ -16,7 +16,7 @@
    <text fontfamily="Sans Serif" pixelsize="39" wrap="1" halign="center" valign="center">Chapter 2</text>
   </object>
   <object id="11" x="-131" y="0" width="550" height="40">
-   <text wrap="1">The obsticale</text>
+   <text wrap="1">The obstacle</text>
   </object>
  </objectgroup>
  <objectgroup id="3" name="misc">

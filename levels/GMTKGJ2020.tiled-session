@@ -162,10 +162,10 @@
         },
         "w3l2.tmx": {
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": -263.5,
-                "y": -346
+                "x": -202.5,
+                "y": -285
             }
         }
     },

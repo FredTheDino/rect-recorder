@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 49,
+  nextobjectid = 50,
   properties = {},
   tilesets = {},
   layers = {
@@ -87,12 +87,27 @@ return {
           height = 59.5523,
           rotation = 0,
           visible = true,
-          text = "It has to be worth the struggle",
+          text = "In the end...",
           fontfamily = "Sans Serif",
           pixelsize = 22,
           wrap = true,
           halign = "center",
           valign = "center",
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          type = "",
+          shape = "text",
+          x = -350,
+          y = -100,
+          width = 389.438,
+          height = 19,
+          rotation = 0,
+          visible = true,
+          text = " it has to be worth the struggle, no?",
+          wrap = true,
           properties = {}
         }
       }

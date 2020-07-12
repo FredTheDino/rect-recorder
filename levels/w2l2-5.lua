@@ -118,7 +118,7 @@ return {
           height = 40,
           rotation = 0,
           visible = true,
-          text = "If they neatly fit inmy worldview?",
+          text = "If they neatly fit in my worldview?",
           wrap = true,
           properties = {}
         }

@@ -18,7 +18,7 @@ function love.load()
     music:setVolume(0.5)
     music:play()
 
-    current_level = Level.load("levels.w3l2")
+    current_level = Level.load("levels.w1l1")
     start_level()
 end
 
@@ -57,8 +57,6 @@ function love.update(delta)
         if goal:should_load_next() and current_level.next ~= "end" then
             if current_level.next ~= nil then
                 current_level = Level.load(current_level.next)
-            else
-                print("No next level")
             end
             start_level()
         end
@@ -82,7 +80,7 @@ function love.draw()
         local t = (love.timer.getTime() - goal.finish_start) / goal.fadein_time
         love.graphics.setColor(1.0, 1.0, 1.0, t)
         love.graphics.setFont(large_font)
-        love.graphics.print("The End", 220, 300)
+        love.graphics.printf("The End", 000, 300, 800, "center")
     end
 end
 
@@ -96,6 +94,11 @@ function love.keypressed(key, scancode, isrepeat)
     if key == "space" or key == "w" then
         player.bounce_mode = true
         player:do_jump()
+    end
+
+    if key == "n" then
+        player.x = goal.x
+        player.y = goal.y
     end
 
     if key == "r" then

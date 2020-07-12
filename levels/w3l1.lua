@@ -56,9 +56,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 300,
-          y = -100,
-          width = 200,
-          height = 50,
+          y = -110,
+          width = 250,
+          height = 60,
           rotation = 0,
           visible = true,
           properties = {

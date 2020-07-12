@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 13,
+  nextobjectid = 14,
   properties = {},
   tilesets = {},
   layers = {
@@ -72,7 +72,7 @@ return {
           name = "",
           type = "",
           shape = "rectangle",
-          x = -200,
+          x = -350,
           y = -300,
           width = 100,
           height = 250,
@@ -113,6 +113,23 @@ return {
           text = "Even though they are so heavy?",
           wrap = true,
           properties = {}
+        },
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = -200,
+          y = -300,
+          width = 100,
+          height = 250,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["b"] = 0,
+            ["f"] = 1,
+            ["m"] = 1.1
+          }
         }
       }
     },

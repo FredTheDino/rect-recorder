@@ -5,7 +5,6 @@ local large_font = love.graphics.newFont("baskervville.ttf", 100, "normal")
 function Text.new(x, y, w, size, text)
     local this = {}
 
-    print(x, y, size, text)
     this.non_collidable = true
     this.x = x
     this.y = y
