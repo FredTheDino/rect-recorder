@@ -23,6 +23,7 @@ function Player.new(x, y)
 
     this.player = true
     this.grounded = false
+    this.finished = false
 
     this.acc = 5000.0
     this.air_acc = 800.0
@@ -33,7 +34,6 @@ function Player.new(x, y)
     this.jump_speedup = 200.0
     this.extra_jump = 2000.0
     this.max_speed = 800
-
 
     this.jump = false
     this.left = false

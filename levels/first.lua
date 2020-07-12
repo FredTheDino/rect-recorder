@@ -39,7 +39,7 @@ return {
         },
         {
           id = 6,
-          name = "finish",
+          name = "goal",
           type = "",
           shape = "point",
           x = 650,

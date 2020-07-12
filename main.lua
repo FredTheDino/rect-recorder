@@ -6,6 +6,7 @@ local current_level = nil
 
 local gos = nil
 local player = nil
+local goal = nil
 function love.load()
     current_level = Level.load("levels.first")
     start_level()
@@ -17,15 +18,17 @@ function start_level()
 end
 
 function love.update(delta)
-    for _, v in pairs(gos) do
-        v:update(delta)
-    end
+    if not player.finished then 
+        for _, v in pairs(gos) do
+            v:update(delta)
+        end
 
-    for i = 0,3,1 do
-        for i, a in pairs(gos) do
-            for j, b in pairs(gos) do
-                if j > i then 
-                    Box.overlap_and_solve(delta, a, b)
+        for i = 0,3,1 do
+            for i, a in pairs(gos) do
+                for j, b in pairs(gos) do
+                    if j > i and not a.non_collidable and not b.non_collidable then 
+                        Box.overlap_and_solve(delta, a, b)
+                    end
                 end
             end
         end
@@ -35,6 +38,12 @@ function love.update(delta)
 end
 
 function love.draw()
+    if player.finished then
+        love.graphics.clear(0, 0, 0, 1.0)
+    else
+        love.graphics.clear(0, 0.5, 0, 1.0)
+    end
+
     love.graphics.origin()
     player:ui()
     camera:draw()

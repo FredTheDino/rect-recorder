@@ -1,12 +1,13 @@
 local Box = require("box")
 local Player = require("player")
+local Goal = require("goal")
 local Level = {}
 
 function Level.load(level_name)
     local this = {}
     this.objs = {}
     this.start = nil
-    this.finish = nil
+    this.goal = nil
 
     local raw_data = require(level_name)
     for _, layer in pairs(raw_data.layers) do
@@ -14,8 +15,8 @@ function Level.load(level_name)
             for _, obj in pairs(layer.objects) do
                 if obj.name == "start" then
                     this.start = {x=obj.x, y = obj.y}
-                elseif obj.name == "finish" then
-                    this.finish = {x=obj.x, y = obj.y} 
+                elseif obj.name == "goal" then
+                    this.goal = {x=obj.x, y = obj.y} 
                 end
             end 
         end
@@ -43,8 +44,11 @@ function Level.load(level_name)
 
     function this.inst(this)
         local player = Player.new(this.start.x, this.start.y)
+        local goal = Goal.new(this.goal.x, this.goal.y)
+        goal.player = player
         local gos = copy(this.objs)
         table.insert(gos, player)
+        table.insert(gos, goal)
         return player, gos
     end
 
