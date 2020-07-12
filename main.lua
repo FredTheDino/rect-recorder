@@ -10,7 +10,7 @@ local goal = nil
 
 local load_next = nil
 function love.load()
-    current_level = Level.load("levels.w3l1")
+    current_level = Level.load("levels.w1l1")
     start_level()
 end
 

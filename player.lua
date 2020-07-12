@@ -41,10 +41,12 @@ function Player.new(x, y)
     this.right = false
     this.bounce_mode = false
 
-    this.full_energy = 1.0
     this.jump_energy_cost = 0.15
     this.walk_energy_cost = 0.3
+
+    this.full_energy = 1.0
     this.energy = this.full_energy
+    this.bar_energy = this.energy
 
     function this.do_jump(this)
         local cost = this.jump_energy_cost
@@ -116,12 +118,22 @@ function Player.new(x, y)
 
     function this.ui(this)
         local p = 10
-        local w = 25
-        local h = 200
-        local c = 0.5 + this.energy * 0.5
-        local r = math.random() * (1.0 - this.energy) * 0.2 + 0.8
+        local w = 200
+        local h = 25
+
+        
+        local t = (this.bar_energy + this.energy) / 2.0
+        this.bar_energy = t
+
+        local c = 0.5 + t * 0.5
+        local r = 0.8
         love.graphics.setColor(r, c, c, 1.0)
-        love.graphics.rectangle("fill", p, (h * (1.0 - this.energy)) + p, w, h * this.energy)
+
+        local max_shake = 5
+        local sx = math.pow(math.random() * (1.0 - t), 2) * max_shake - max_shake / 2
+        local sy = math.pow(math.random() * (1.0 - t), 2) * max_shake - max_shake / 2
+
+        love.graphics.rectangle("fill", p + sx,  p + sy, w * t, h)
     end
 
     function lerp(a, b, t)
