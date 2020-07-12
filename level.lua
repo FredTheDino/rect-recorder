@@ -4,10 +4,10 @@ local Goal = require("goal")
 local Level = {}
 
 function Level.load(level_name)
-    print(level_name)
     local raw_data = require(level_name)
 
     local this = {}
+    this.name = level_name
     this.objs = {}
     this.start = nil
     this.goal = nil
@@ -21,9 +21,7 @@ function Level.load(level_name)
                 elseif obj.name == "goal" then
                     this.goal = {x=obj.x, y = obj.y} 
                 elseif obj.name == "next" then
-                    print("next:", obj.type)
                     this.next = obj.type
-                    print("next:", this.next)
                 end
             end 
         end

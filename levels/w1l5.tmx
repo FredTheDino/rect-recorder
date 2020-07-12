@@ -17,7 +17,7 @@
   <object id="2" name="goal" x="100" y="-350">
    <point/>
   </object>
-  <object id="6" name="next" type="levels.w1l2" x="-50" y="-250">
+  <object id="6" name="next" type="levels.w2l1" x="0" y="-250">
    <point/>
   </object>
  </objectgroup>

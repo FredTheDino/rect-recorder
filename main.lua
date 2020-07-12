@@ -10,7 +10,12 @@ local goal = nil
 
 local load_next = nil
 function love.load()
-    current_level = Level.load("levels.w1l5")
+    current_level = Level.load("levels.w3l1")
+    start_level()
+end
+
+function reload_level(name)
+    current_level = Level.load(current_level.name)
     start_level()
 end
 
@@ -81,7 +86,7 @@ function love.keypressed(key, scancode, isrepeat)
     end
 
     if key == "r" then
-        start_level()
+        reload_level()
     end
 end
 
