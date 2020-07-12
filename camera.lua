@@ -10,6 +10,11 @@ function clamp(v, l, h)
     return math.max(l, math.min(h, v))
 end
 
+function camera.setup(this, a, b)
+    this.x = (a.x + b.x) / 2
+    this.y = (a.y + b.y) / 2
+end
+
 function camera.update(this, a, b, delta)
     this.t = math.max(0, this.t - delta * math.max(this.t * 10, 1.0))
 

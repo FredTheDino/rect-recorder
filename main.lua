@@ -22,6 +22,7 @@ end
 function start_level()
     player, goal, gos = current_level:inst()
     player.camera = camera
+    camera:setup(player, goal)
 end
 
 function love.update(delta)
@@ -44,12 +45,8 @@ function love.update(delta)
             start_level()
         end
     else
-        if load_next == nil then
-            load_next = love.timer.getTime() + 0.5
-        end
-
-        if love.timer.getTime() >= load_next then
-            load_next = nil
+        goal:update()
+        if goal:should_load_next() then
             if current_level.next ~= nil then
                 current_level = Level.load(current_level.next)
             else
@@ -57,6 +54,14 @@ function love.update(delta)
             end
             start_level()
         end
+
+        -- if load_next == nil then
+        --     load_next = love.timer.getTime() + 0.5
+        -- end
+
+        -- if love.timer.getTime() >= load_next then
+        --     load_next = nil
+        -- end
     end
 
     camera:update(player, goal, delta)
