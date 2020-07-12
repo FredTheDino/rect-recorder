@@ -7,13 +7,15 @@ local current_level = nil
 local gos = nil
 local player = nil
 local goal = nil
+
+local load_next = nil
 function love.load()
-    current_level = Level.load("levels.first")
+    current_level = Level.load("levels.w1l3")
     start_level()
 end
 
 function start_level()
-    player, gos = current_level:inst()
+    player, goal, gos = current_level:inst()
     player.camera = camera
 end
 
@@ -32,17 +34,31 @@ function love.update(delta)
                 end
             end
         end
+
+        if player.y > 500 then
+            start_level()
+        end
+    else
+        if load_next == nil then
+            load_next = love.timer.getTime() + 0.5
+        end
+
+        if love.timer.getTime() >= load_next then
+            load_next = nil
+            if current_level.next ~= nil then
+                current_level = Level.load(current_level.next)
+            else
+                print("No next level")
+            end
+            start_level()
+        end
     end
 
-    camera:update(player, delta)
+    camera:update(player, goal, delta)
 end
 
 function love.draw()
-    if player.finished then
-        love.graphics.clear(0, 0, 0, 1.0)
-    else
-        love.graphics.clear(0, 0.5, 0, 1.0)
-    end
+    love.graphics.clear(0, 0, 0, 1.0)
 
     love.graphics.origin()
     player:ui()
@@ -57,15 +73,11 @@ function love.keypressed(key, scancode, isrepeat)
 
     if key == "left" or key == "a" then
         player.left = true
-    elseif key == "right" or key == "d" then
-        player.right = true
-    elseif key == "space" or key == "w" then
-        player.bounce_mode = true
-        player:do_jump()
     end
 
-    if key == "e" then
-        camera:shake(0.5)
+    if key == "space" or key == "w" then
+        player.bounce_mode = true
+        player:do_jump()
     end
 
     if key == "r" then
@@ -76,9 +88,8 @@ end
 function love.keyreleased(key, sc)
     if key == "left" or key == "a" then
         player.left = false
-    elseif key == "right" or key == "d" then
-        player.right = false
-    elseif key == "space" or key == "w" then
+    end
+    if key == "space" or key == "w" then
         player.bounce_mode = false
         player.jump = false
     end

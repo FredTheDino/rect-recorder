@@ -4,12 +4,15 @@ local Goal = require("goal")
 local Level = {}
 
 function Level.load(level_name)
+    print(level_name)
+    local raw_data = require(level_name)
+
     local this = {}
     this.objs = {}
     this.start = nil
     this.goal = nil
+    this.next = nil
 
-    local raw_data = require(level_name)
     for _, layer in pairs(raw_data.layers) do
         if layer.name == "misc" then
             for _, obj in pairs(layer.objects) do
@@ -17,6 +20,10 @@ function Level.load(level_name)
                     this.start = {x=obj.x, y = obj.y}
                 elseif obj.name == "goal" then
                     this.goal = {x=obj.x, y = obj.y} 
+                elseif obj.name == "next" then
+                    print("next:", obj.type)
+                    this.next = obj.type
+                    print("next:", this.next)
                 end
             end 
         end
@@ -49,7 +56,7 @@ function Level.load(level_name)
         local gos = copy(this.objs)
         table.insert(gos, player)
         table.insert(gos, goal)
-        return player, gos
+        return player, goal, gos
     end
 
     return this

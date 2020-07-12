@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="4" nextobjectid="7">
+ <editorsettings>
+  <export target="w1l2.lua" format="lua"/>
+ </editorsettings>
+ <objectgroup id="2" name="misc">
+  <object id="1" name="start" x="350" y="-350">
+   <point/>
+  </object>
+  <object id="2" name="goal" x="-300" y="-400">
+   <point/>
+  </object>
+  <object id="6" name="next" type="levels.w1l3" x="0" y="-500">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="platforms">
+  <object id="3" x="250" y="-300" width="200" height="500"/>
+  <object id="4" x="-200" y="-50" width="450" height="250"/>
+  <object id="5" x="-400" y="-350" width="200" height="550"/>
+ </objectgroup>
+</map>

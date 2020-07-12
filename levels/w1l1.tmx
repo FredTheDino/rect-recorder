@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.1" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="50" tileheight="50" infinite="1" nextlayerid="6" nextobjectid="16">
+ <editorsettings>
+  <export target="w1l1.lua" format="lua"/>
+ </editorsettings>
+ <objectgroup id="2" name="misc">
+  <object id="4" name="start" x="700" y="-200">
+   <point/>
+  </object>
+  <object id="6" name="goal" x="-50" y="-200">
+   <point/>
+  </object>
+  <object id="8" name="next" type="levels.w1l1-5" x="350" y="-500">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="platforms">
+  <object id="1" x="-150" y="-150" width="950" height="100"/>
+ </objectgroup>
+</map>

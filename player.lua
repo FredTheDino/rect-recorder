@@ -41,8 +41,8 @@ function Player.new(x, y)
     this.bounce_mode = false
 
     this.full_energy = 1.0
-    this.jump_energy_cost = 0.0
-    this.walk_energy_cost = 0.0
+    this.jump_energy_cost = 0.2
+    this.walk_energy_cost = 0.3
     this.energy = this.full_energy
 
     function this.do_jump(this)
@@ -60,7 +60,7 @@ function Player.new(x, y)
                     this.vx = this.vx + this.jump_speedup
                 end
 
-                this.energy = this.energy - this.jump_energy_cost
+                this.energy = this.energy - cost
             end
         end
     end
@@ -86,11 +86,11 @@ function Player.new(x, y)
             if this.left then
                 local vel_scale = math.min(math.abs(this.vx + this.max_speed) / this.max_speed, 1.0)
                 this.vx = this.vx - acc * vel_scale * delta
-                this.energy = this.energy - cost
+                this.energy = math.max(this.energy - cost, 0)
             elseif this.right then
                 local vel_scale = math.min(math.abs(this.vx - this.max_speed) / this.max_speed, 1.0)
                 this.vx = this.vx + acc * vel_scale * delta
-                this.energy = this.energy - cost
+                this.energy = math.max(this.energy - cost, 0)
             end
         end
 
@@ -130,14 +130,13 @@ function Player.new(x, y)
 
         local s = 0.1
         local force = clamp(this.ay * 0.0004, -s, s)
-        this.squeeze = (this.squeeze + 2 * force) / 3
-        this.squeeze = this.squeeze * math.pow(0.3, love.timer.getDelta())
+        this.squeeze = (this.squeeze + 3 * force) / 4
+        this.squeeze = this.squeeze * math.pow(0.5, love.timer.getDelta())
 
         local num_slices = 10
         local area = 5000 / num_slices
         local h = (this.squeeze + 1.0) * (this.h / num_slices)
         local w = area / h
-        this.w = w
 
         local bottom = this.y + this.h / 2.0
         local center = this.x - w / 2.0

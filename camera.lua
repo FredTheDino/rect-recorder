@@ -10,14 +10,16 @@ function clamp(v, l, h)
     return math.max(l, math.min(h, v))
 end
 
-function camera.update(this, target, delta)
+function camera.update(this, a, b, delta)
     this.t = math.max(0, this.t - delta * math.max(this.t * 10, 1.0))
 
+    local target_x = (a.x + b.x) / 2
+    local target_y = (a.y + b.y) / 2
     
-    local dx = target.x - this.x
-    local dy = target.y - this.y
+    local dx = target_x - this.x
+    local dy = target_y - this.y
 
-    if dy < (camera.radius * 3) and not target.grounded then
+    if dy < (camera.radius * 3) and not a.grounded then
         dy = 0
     end
 
@@ -40,7 +42,7 @@ function camera.draw(this)
     love.graphics.rotate(math.sin(math.random() * 2 * math.pi) * math.min(shake * 0.01, 0.1))
     love.graphics.translate(math.sin(math.random() * 2 * math.pi) * shake * 5,
                             math.sin(math.random() * 2 * math.pi) * shake * 5)
-    love.graphics.scale(math.min(math.random() * shake * 0.01, 0.5) + 0.9)
+    love.graphics.scale(math.min(math.random() * shake * 0.01, 0.5) + 0.5)
     love.graphics.translate(-this.x, -this.y)
 end
 

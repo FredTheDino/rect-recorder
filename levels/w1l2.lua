@@ -9,7 +9,7 @@ return {
   tilewidth = 50,
   tileheight = 50,
   nextlayerid = 4,
-  nextobjectid = 8,
+  nextobjectid = 7,
   properties = {},
   tilesets = {},
   layers = {
@@ -25,12 +25,25 @@ return {
       properties = {},
       objects = {
         {
-          id = 4,
+          id = 1,
           name = "start",
           type = "",
           shape = "point",
-          x = 0,
-          y = -200,
+          x = 350,
+          y = -350,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 2,
+          name = "goal",
+          type = "",
+          shape = "point",
+          x = -300,
+          y = -400,
           width = 0,
           height = 0,
           rotation = 0,
@@ -39,11 +52,11 @@ return {
         },
         {
           id = 6,
-          name = "goal",
-          type = "",
+          name = "next",
+          type = "levels.w1l3",
           shape = "point",
-          x = 650,
-          y = -200,
+          x = 0,
+          y = -500,
           width = 0,
           height = 0,
           rotation = 0,
@@ -64,59 +77,43 @@ return {
       properties = {},
       objects = {
         {
-          id = 1,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = -150,
-          y = -150,
-          width = 950,
-          height = 100,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 2,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = -150,
-          y = -400,
-          width = 50,
-          height = 250,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 3,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 750,
-          y = -400,
-          width = 50,
-          height = 250,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 7,
           name = "",
           type = "",
           shape = "rectangle",
           x = 250,
           y = -300,
           width = 200,
-          height = 150,
+          height = 500,
           rotation = 0,
           visible = true,
-          properties = {
-            ["f"] = "0.4",
-            ["m"] = "1.0"
-          }
+          properties = {}
+        },
+        {
+          id = 4,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = -200,
+          y = -50,
+          width = 450,
+          height = 250,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 5,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = -400,
+          y = -350,
+          width = 200,
+          height = 550,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }
